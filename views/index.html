@@ -1,0 +1,24 @@
+<h1>ToDo App</h1>
+
+<ul class="list-group">
+    <% todosList.forEach(o => { %>
+    <% if(o.isActive) { %>
+    <li class="list-group-item">
+        <form action="/toggle" method="POST">
+            <%= o.todo %>
+            <input type="hidden" name="id" value="<%= o.id %>" />
+            <button type="submit" class="btn btn-warning btn-lg float-right">Deactivate</button>
+        </form>
+    </li>
+    <% } %>
+    <% if(!o.isActive) { %>
+    <li class="list-group-item">
+        <form action="/toggle" method="POST">
+            <s><%= o.todo %></s>
+            <input type="hidden" name="id" value="<%= o.id %>" />
+            <button type="submit" class="btn btn-success btn-lg float-right">Activate</button>
+        </form>
+    </li>
+    <% } %>
+    <% }) %>
+</ul>
