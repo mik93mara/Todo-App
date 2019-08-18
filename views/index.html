@@ -3,21 +3,33 @@
 <ul class="list-group">
     <% todosList.forEach(o => { %>
     <% if(o.isActive) { %>
-    <li class="list-group-item">
-        <form action="/toggle" method="POST">
-            <%= o.todo %>
-            <input type="hidden" name="id" value="<%= o.id %>" />
-            <button type="submit" class="btn btn-warning btn-lg float-right">Deactivate</button>
-        </form>
+    <li class="list-group-item d-flex justify-content-between">
+        <b><%= o.todo %></b>
+        <div class="d-flex justify-content-end">
+            <form action="/toggle" method="POST">
+                <input type="hidden" name="id" value="<%= o.id %>" />
+                <button type="submit" class="btn btn-link btn-lg mr-1 pull-right">Deactivate</button>
+            </form>
+            <form action="/delete" method="POST">
+                <input type="hidden" name="id" value="<%= o.id %>" />
+                <button type="submit" class="btn btn-danger btn-lg pull-right">Delete</button>
+            </form>
+        </div>
     </li>
     <% } %>
     <% if(!o.isActive) { %>
-    <li class="list-group-item">
-        <form action="/toggle" method="POST">
-            <s><%= o.todo %></s>
-            <input type="hidden" name="id" value="<%= o.id %>" />
-            <button type="submit" class="btn btn-success btn-lg float-right">Activate</button>
-        </form>
+    <li class="list-group-item d-flex justify-content-between">
+        <s><%= o.todo %></s>
+        <div class="d-flex justify-content-end">
+            <form action="/toggle" method="POST">
+                <input type="hidden" name="id" value="<%= o.id %>" />
+                <button type="submit" class="btn btn-success btn-lg mr-1 pull-right">Activate</button>
+            </form>
+            <form action="/delete" method="POST">
+                <input type="hidden" name="id" value="<%= o.id %>" />
+                <button type="submit" class="btn btn-danger btn-lg pull-right">Delete</button>
+            </form>
+        </div>
     </li>
     <% } %>
     <% }) %>

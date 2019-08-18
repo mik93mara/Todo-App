@@ -30,7 +30,7 @@ router.get("/add", views.add);
 router.get("/todos", api.getToDos);
 router.post("/add", api.addToDo);
 router.post("/toggle", api.toggleToDo);
-router.delete("/add", api.deleteToDo);
+router.post("/delete", api.deleteToDo);
 
 // router middleware
 app.use(router.routes()).use(router.allowedMethods());

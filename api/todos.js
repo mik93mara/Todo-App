@@ -27,6 +27,7 @@ class Api {
     }
 
     getLastId() {
+        if (this.todosList.length === 0) return 0;
         return this.todosList[this.todosList.length - 1].id + 1;
     }
 
@@ -46,7 +47,7 @@ class Api {
     deleteToDoById(id) {
         let deletedToDo = {};
         this.todosList = this.todosList.filter(t => {
-            if(t.id !== id){
+            if (t.id != id) {
                 return true
             }
             else {
